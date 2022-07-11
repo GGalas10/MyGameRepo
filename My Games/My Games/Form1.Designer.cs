@@ -30,19 +30,19 @@
         {
             this.TitleLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.WisielecBtn = new System.Windows.Forms.Button();
-            this.KiKBtn = new System.Windows.Forms.Button();
             this.MemoryBtn = new System.Windows.Forms.Button();
+            this.KiKBtn = new System.Windows.Forms.Button();
+            this.WisielecBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleLbl
             // 
             this.TitleLbl.AutoSize = true;
-            this.TitleLbl.Font = new System.Drawing.Font("Jokerman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TitleLbl.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TitleLbl.Location = new System.Drawing.Point(180, 9);
             this.TitleLbl.Name = "TitleLbl";
-            this.TitleLbl.Size = new System.Drawing.Size(42, 17);
+            this.TitleLbl.Size = new System.Drawing.Size(65, 22);
             this.TitleLbl.TabIndex = 0;
             this.TitleLbl.Text = "label1";
             // 
@@ -51,19 +51,19 @@
             this.panel1.Controls.Add(this.MemoryBtn);
             this.panel1.Controls.Add(this.KiKBtn);
             this.panel1.Controls.Add(this.WisielecBtn);
-            this.panel1.Location = new System.Drawing.Point(3, 87);
+            this.panel1.Location = new System.Drawing.Point(3, 143);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(460, 473);
+            this.panel1.Size = new System.Drawing.Size(460, 417);
             this.panel1.TabIndex = 1;
             // 
-            // WisielecBtn
+            // MemoryBtn
             // 
-            this.WisielecBtn.Location = new System.Drawing.Point(9, 3);
-            this.WisielecBtn.Name = "WisielecBtn";
-            this.WisielecBtn.Size = new System.Drawing.Size(97, 23);
-            this.WisielecBtn.TabIndex = 0;
-            this.WisielecBtn.Text = "Wisielec";
-            this.WisielecBtn.UseVisualStyleBackColor = true;
+            this.MemoryBtn.Location = new System.Drawing.Point(9, 82);
+            this.MemoryBtn.Name = "MemoryBtn";
+            this.MemoryBtn.Size = new System.Drawing.Size(97, 48);
+            this.MemoryBtn.TabIndex = 2;
+            this.MemoryBtn.Text = "Ćwiczenie pamięci";
+            this.MemoryBtn.UseVisualStyleBackColor = true;
             // 
             // KiKBtn
             // 
@@ -74,14 +74,19 @@
             this.KiKBtn.Text = "Kółko i krzyżyk 2 graczy";
             this.KiKBtn.UseVisualStyleBackColor = true;
             // 
-            // MemoryBtn
+            // WisielecBtn
             // 
-            this.MemoryBtn.Location = new System.Drawing.Point(9, 82);
-            this.MemoryBtn.Name = "MemoryBtn";
-            this.MemoryBtn.Size = new System.Drawing.Size(97, 48);
-            this.MemoryBtn.TabIndex = 2;
-            this.MemoryBtn.Text = "Ćwiczenie pamięci";
-            this.MemoryBtn.UseVisualStyleBackColor = true;
+            this.WisielecBtn.BackColor = System.Drawing.Color.DarkCyan;
+            this.WisielecBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WisielecBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WisielecBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.WisielecBtn.Location = new System.Drawing.Point(9, 3);
+            this.WisielecBtn.Name = "WisielecBtn";
+            this.WisielecBtn.Size = new System.Drawing.Size(97, 23);
+            this.WisielecBtn.TabIndex = 0;
+            this.WisielecBtn.Text = "Wisielec";
+            this.WisielecBtn.UseVisualStyleBackColor = false;
+            this.WisielecBtn.Click += new System.EventHandler(this.WisielecBtn_Click);
             // 
             // Form1
             // 
