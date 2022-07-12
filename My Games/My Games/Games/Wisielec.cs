@@ -120,6 +120,9 @@ namespace My_Games.Games
         }
         private void CheckedLetter(Object textBox, KeyEventArgs e)
         {
+            TextBox sender = textBox as TextBox;
+            if (sender.Text == "" || string.IsNullOrEmpty(sender.Text))
+                return;
             int how = 0;
             foreach(TextBox box in lettersBoxes)
             {
@@ -131,8 +134,7 @@ namespace My_Games.Games
                 GetWord(allCategoryWords);
                 SetTextBox(Word);
                 MessageBox.Show("Brawo !!!");
-            }
-            TextBox sender = textBox as TextBox;
+            }            
             if (sender.Name.ToLower().Trim() == sender.Text.ToLower().Trim())
             {
                 points++;
