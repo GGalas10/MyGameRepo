@@ -34,6 +34,9 @@
             this.CategoryLbl = new System.Windows.Forms.Label();
             this.CategoryBox = new System.Windows.Forms.CheckedListBox();
             this.PointLbl = new System.Windows.Forms.Label();
+            this.HardModeCheck = new System.Windows.Forms.CheckBox();
+            this.EasyBox = new System.Windows.Forms.TextBox();
+            this.EasyBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -92,11 +95,45 @@
             this.PointLbl.Size = new System.Drawing.Size(0, 15);
             this.PointLbl.TabIndex = 7;
             // 
+            // HardModeCheck
+            // 
+            this.HardModeCheck.AutoSize = true;
+            this.HardModeCheck.Location = new System.Drawing.Point(374, 10);
+            this.HardModeCheck.Name = "HardModeCheck";
+            this.HardModeCheck.Size = new System.Drawing.Size(86, 19);
+            this.HardModeCheck.TabIndex = 8;
+            this.HardModeCheck.TabStop = false;
+            this.HardModeCheck.Text = "Hard Mode";
+            this.HardModeCheck.UseVisualStyleBackColor = true;
+            // 
+            // EasyBox
+            // 
+            this.EasyBox.Location = new System.Drawing.Point(189, 401);
+            this.EasyBox.MaxLength = 1;
+            this.EasyBox.Name = "EasyBox";
+            this.EasyBox.Size = new System.Drawing.Size(37, 23);
+            this.EasyBox.TabIndex = 9;
+            this.EasyBox.Visible = false;
+            // 
+            // EasyBtn
+            // 
+            this.EasyBtn.Location = new System.Drawing.Point(232, 400);
+            this.EasyBtn.Name = "EasyBtn";
+            this.EasyBtn.Size = new System.Drawing.Size(75, 23);
+            this.EasyBtn.TabIndex = 10;
+            this.EasyBtn.Text = "Sprawdź";
+            this.EasyBtn.UseVisualStyleBackColor = true;
+            this.EasyBtn.Visible = false;
+            this.EasyBtn.Click += new System.EventHandler(this.EasyBtn_Click);
+            // 
             // Wisielec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 386);
+            this.ClientSize = new System.Drawing.Size(544, 436);
+            this.Controls.Add(this.EasyBtn);
+            this.Controls.Add(this.EasyBox);
+            this.Controls.Add(this.HardModeCheck);
             this.Controls.Add(this.PointLbl);
             this.Controls.Add(this.CategoryBox);
             this.Controls.Add(this.CategoryLbl);
@@ -120,5 +157,8 @@
         private Label CategoryLbl;
         private CheckedListBox CategoryBox;
         private Label PointLbl;
+        private CheckBox HardModeCheck;
+        private TextBox EasyBox;
+        private Button EasyBtn;
     }
 }
