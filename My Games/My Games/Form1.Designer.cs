@@ -67,12 +67,16 @@
             // 
             // KiKBtn
             // 
+            this.KiKBtn.BackColor = System.Drawing.Color.DarkCyan;
+            this.KiKBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.KiKBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.KiKBtn.Location = new System.Drawing.Point(9, 32);
             this.KiKBtn.Name = "KiKBtn";
             this.KiKBtn.Size = new System.Drawing.Size(97, 44);
             this.KiKBtn.TabIndex = 1;
             this.KiKBtn.Text = "Kółko i krzyżyk 2 graczy";
-            this.KiKBtn.UseVisualStyleBackColor = true;
+            this.KiKBtn.UseVisualStyleBackColor = false;
+            this.KiKBtn.Click += new System.EventHandler(this.KiKBtn_Click);
             // 
             // WisielecBtn
             // 

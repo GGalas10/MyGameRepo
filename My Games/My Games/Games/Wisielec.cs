@@ -45,7 +45,6 @@ namespace My_Games.Games
                 if (allCategoryWords.Count == 0)
                     allCategoryWords.AddRange(Words.RandomWords);
                 GetWord(allCategoryWords);
-                MessageBox.Show(Word);
                 SetTextBox(Word);
             }
             else
@@ -65,7 +64,6 @@ namespace My_Games.Games
                 if (allCategoryWords.Count == 0)
                     allCategoryWords.AddRange(Words.RandomWords);
                 GetWord(allCategoryWords);
-                MessageBox.Show(Word);
                 SetLabel(Word);
             }
         }
