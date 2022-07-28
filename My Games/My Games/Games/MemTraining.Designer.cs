@@ -36,9 +36,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.TitleLbl = new System.Windows.Forms.Label();
             this.PicImage = new System.Windows.Forms.ImageList(this.components);
-            this.BlackPic = new System.Windows.Forms.ImageList(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this._Timer = new System.Windows.Forms.Timer(this.components);
+            this.TimeLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,27 +117,25 @@
             this.PicImage.Images.SetKeyName(10, "telescope.png");
             this.PicImage.Images.SetKeyName(11, "waterfall.png");
             // 
-            // BlackPic
+            // _Timer
             // 
-            this.BlackPic.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.BlackPic.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BlackPic.ImageStream")));
-            this.BlackPic.TransparentColor = System.Drawing.Color.Transparent;
-            this.BlackPic.Images.SetKeyName(0, "Black.png");
+            this._Timer.Enabled = true;
+            this._Timer.Tick += new System.EventHandler(this._Timer_Tick);
             // 
-            // pictureBox1
+            // TimeLbl
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(367, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.TimeLbl.AutoSize = true;
+            this.TimeLbl.Location = new System.Drawing.Point(12, 22);
+            this.TimeLbl.Name = "TimeLbl";
+            this.TimeLbl.Size = new System.Drawing.Size(0, 15);
+            this.TimeLbl.TabIndex = 4;
             // 
             // MemTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 371);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.TimeLbl);
             this.Controls.Add(this.TitleLbl);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.PktLbl);
@@ -148,7 +145,6 @@
             this.Name = "MemTraining";
             this.Text = "MemTrain";
             this.Load += new System.EventHandler(this.MTLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +158,7 @@
         private ComboBox comboBox1;
         private Label TitleLbl;
         private ImageList PicImage;
-        private ImageList BlackPic;
-        private PictureBox pictureBox1;
+        private System.Windows.Forms.Timer _Timer;
+        private Label TimeLbl;
     }
 }

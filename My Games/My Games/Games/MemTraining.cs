@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
+using System.Diagnostics;
+using System.Threading;
 
 namespace My_Games.Games
 {
@@ -15,7 +9,9 @@ namespace My_Games.Games
         #region Variable
         private int _Pkt = 0,_ImageNum;
         List<PictureBox> pcBoxList = new List<PictureBox>();
-        Task tr1;
+        Stopwatch gamewatch = new Stopwatch();
+        Stopwatch watch = new Stopwatch();
+        Thread _th1;
         #endregion
         public MemTraining()
         {
@@ -96,11 +92,19 @@ namespace My_Games.Games
             List<int> ImageNumber = new List<int>();
             for(int i=0;i< _ImageNum; i++)
             {
-                ImageNumber.Add(i);
-                ImageNumber.Add(i);
+                int temp = rand.Next(0, 12);
+                if (ImageNumber.Contains(temp))
+                {
+                    i--;
+                }
+                else
+                {
+                    ImageNumber.Add(temp);
+                    ImageNumber.Add(temp);
+                }
             }
             foreach(var box in pcBoxList) { 
-                int temp = ImageNumber[rand.Next(0, ImageNumber.Count - 1)];
+                int temp = ImageNumber[rand.Next(0, ImageNumber.Count)];
                 box.Name = temp.ToString();
                 ImageNumber.Remove(temp);
 
@@ -109,7 +113,9 @@ namespace My_Games.Games
         public void ImageCheck()
         {
             if (pcBoxList.Where(p => p.Tag.ToString() == "click").Count() < 2)
+            {
                 return;
+            }
             List<PictureBox> temp = new List<PictureBox>();
             temp.AddRange(pcBoxList.Where(p => p.Tag.ToString() == "click"));
             if (temp[0].Name == temp[1].Name)
@@ -134,9 +140,10 @@ namespace My_Games.Games
             }
             if (pcBoxList.Where(p => p.Enabled == false).Count() == _ImageNum * 2)
             {
-                MessageBox.Show("Zgadłeś wszystkie brawo !!!\nKliknij ok później nowa gra.\nPunkty przechodzą na nową grę");
+                watch.Stop();                
+                MessageBox.Show("Zgadłeś wszystkie brawo !!!\nKliknij ok później nowa gra.\nTa gra zajęła Ci "+ gamewatch.Elapsed.ToString("mm\\:ss")+" minut");
+                gamewatch.Reset();
             }
-            return;
         }
         public void PointsChanger()
         {
@@ -151,6 +158,7 @@ namespace My_Games.Games
         private void MTLoad(object sender, EventArgs e)
         {
             PointsChanger();
+            _th1 = new Thread(new ThreadStart(ImageCheck));
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -160,21 +168,28 @@ namespace My_Games.Games
                 MessageBox.Show("Wybrano błędną lczbę");
                 return;
             }
+            watch.Start();
+            gamewatch.Start();
             CreateBox();
             AddImage();
         }
-        private async void BoxClick(object sender, EventArgs e)
-        {
 
-            tr1 = new Task(ImageCheck);
+        private void _Timer_Tick(object sender, EventArgs e)
+        {
+            
+            TimeLbl.Text = "Czas gry: "+watch.Elapsed.ToString("mm\\:ss");
+        }
+
+        private void BoxClick(object sender, EventArgs e)
+        {
             PictureBox send = (PictureBox)sender;
             if (send.BackColor == Color.Black)
             {
                 int Imageid = int.Parse(send.Name.Trim());
+                send.BackColor = DefaultBackColor;
                 send.Image = PicImage.Images[Imageid];
                 send.Tag = "click";
-                send.BackColor = DefaultBackColor;
-                ImageCheck();
+                this.Invoke(new Action(ImageCheck));
                 PointsChanger();
             }
             else
