@@ -11,7 +11,8 @@ namespace My_Games
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Games.MemTraining());
+            //Application.Run(new Games.KPN());
+            Application.Run(new Form1());
         }
     }
 }

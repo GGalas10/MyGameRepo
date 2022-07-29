@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="QtyGame" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">4</Value>
     </Setting>
   </Settings>
 </SettingsFile>

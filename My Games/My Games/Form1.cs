@@ -27,5 +27,17 @@ namespace My_Games
             Games.KiK kik = new Games.KiK();
             kik.ShowDialog();
         }
+
+        private void MemoryBtn_Click(object sender, EventArgs e)
+        {
+            Games.MemTraining mem = new Games.MemTraining();
+            mem.ShowDialog();
+        }
+
+        private void KPN_Click(object sender, EventArgs e)
+        {
+            Games.KPN kpn = new Games.KPN();
+            kpn.ShowDialog();
+        }
     }
 }

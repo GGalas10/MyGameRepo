@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Location = new System.Drawing.Point(12, 82);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(435, 277);
@@ -49,20 +50,30 @@
             // 
             // StartBtn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(139, 53);
+            this.StartBtn.BackColor = System.Drawing.Color.Transparent;
+            this.StartBtn.FlatAppearance.BorderSize = 0;
+            this.StartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartBtn.Font = new System.Drawing.Font("Viner Hand ITC", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StartBtn.ForeColor = System.Drawing.Color.Snow;
+            this.StartBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.StartBtn.Location = new System.Drawing.Point(139, 49);
             this.StartBtn.Name = "StartBtn";
-            this.StartBtn.Size = new System.Drawing.Size(75, 23);
+            this.StartBtn.Size = new System.Drawing.Size(75, 33);
             this.StartBtn.TabIndex = 1;
             this.StartBtn.Text = "Start";
-            this.StartBtn.UseVisualStyleBackColor = true;
+            this.StartBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.StartBtn.UseVisualStyleBackColor = false;
             this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // PktLbl
             // 
             this.PktLbl.AutoSize = true;
-            this.PktLbl.Location = new System.Drawing.Point(220, 57);
+            this.PktLbl.BackColor = System.Drawing.Color.Transparent;
+            this.PktLbl.Font = new System.Drawing.Font("Viner Hand ITC", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PktLbl.ForeColor = System.Drawing.Color.Snow;
+            this.PktLbl.Location = new System.Drawing.Point(220, 53);
             this.PktLbl.Name = "PktLbl";
-            this.PktLbl.Size = new System.Drawing.Size(38, 15);
+            this.PktLbl.Size = new System.Drawing.Size(56, 24);
             this.PktLbl.TabIndex = 2;
             this.PktLbl.Text = "label1";
             // 
@@ -91,11 +102,12 @@
             // TitleLbl
             // 
             this.TitleLbl.AutoSize = true;
-            this.TitleLbl.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleLbl.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.TitleLbl.Location = new System.Drawing.Point(139, 9);
+            this.TitleLbl.BackColor = System.Drawing.Color.Transparent;
+            this.TitleLbl.Font = new System.Drawing.Font("Viner Hand ITC", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TitleLbl.ForeColor = System.Drawing.Color.Black;
+            this.TitleLbl.Location = new System.Drawing.Point(139, 6);
             this.TitleLbl.Name = "TitleLbl";
-            this.TitleLbl.Size = new System.Drawing.Size(195, 31);
+            this.TitleLbl.Size = new System.Drawing.Size(292, 47);
             this.TitleLbl.TabIndex = 3;
             this.TitleLbl.Text = "Ćwiczenie pamięci";
             // 
@@ -125,15 +137,20 @@
             // TimeLbl
             // 
             this.TimeLbl.AutoSize = true;
-            this.TimeLbl.Location = new System.Drawing.Point(12, 22);
+            this.TimeLbl.BackColor = System.Drawing.Color.Transparent;
+            this.TimeLbl.Font = new System.Drawing.Font("Viner Hand ITC", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TimeLbl.ForeColor = System.Drawing.Color.Snow;
+            this.TimeLbl.Location = new System.Drawing.Point(12, 20);
             this.TimeLbl.Name = "TimeLbl";
-            this.TimeLbl.Size = new System.Drawing.Size(0, 15);
+            this.TimeLbl.Size = new System.Drawing.Size(0, 24);
             this.TimeLbl.TabIndex = 4;
             // 
             // MemTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LawnGreen;
+            this.BackgroundImage = global::My_Games.Properties.Resources.texture_background1;
             this.ClientSize = new System.Drawing.Size(459, 371);
             this.Controls.Add(this.TimeLbl);
             this.Controls.Add(this.TitleLbl);

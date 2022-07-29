@@ -30,6 +30,7 @@
         {
             this.TitleLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.KPN = new System.Windows.Forms.Button();
             this.MemoryBtn = new System.Windows.Forms.Button();
             this.KiKBtn = new System.Windows.Forms.Button();
             this.WisielecBtn = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.KPN);
             this.panel1.Controls.Add(this.MemoryBtn);
             this.panel1.Controls.Add(this.KiKBtn);
             this.panel1.Controls.Add(this.WisielecBtn);
@@ -56,14 +58,31 @@
             this.panel1.Size = new System.Drawing.Size(460, 417);
             this.panel1.TabIndex = 1;
             // 
+            // KPN
+            // 
+            this.KPN.BackColor = System.Drawing.Color.DarkCyan;
+            this.KPN.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.KPN.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.KPN.Location = new System.Drawing.Point(112, 3);
+            this.KPN.Name = "KPN";
+            this.KPN.Size = new System.Drawing.Size(286, 36);
+            this.KPN.TabIndex = 3;
+            this.KPN.Text = "Kamień, Papier, Nożyce";
+            this.KPN.UseVisualStyleBackColor = false;
+            this.KPN.Click += new System.EventHandler(this.KPN_Click);
+            // 
             // MemoryBtn
             // 
+            this.MemoryBtn.BackColor = System.Drawing.Color.DarkCyan;
+            this.MemoryBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MemoryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.MemoryBtn.Location = new System.Drawing.Point(9, 82);
             this.MemoryBtn.Name = "MemoryBtn";
             this.MemoryBtn.Size = new System.Drawing.Size(97, 48);
             this.MemoryBtn.TabIndex = 2;
             this.MemoryBtn.Text = "Ćwiczenie pamięci";
-            this.MemoryBtn.UseVisualStyleBackColor = true;
+            this.MemoryBtn.UseVisualStyleBackColor = false;
+            this.MemoryBtn.Click += new System.EventHandler(this.MemoryBtn_Click);
             // 
             // KiKBtn
             // 
@@ -116,5 +135,6 @@
         private Button WisielecBtn;
         private Button KiKBtn;
         private Button MemoryBtn;
+        private Button KPN;
     }
 }

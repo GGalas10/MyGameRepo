@@ -312,8 +312,10 @@ namespace My_Games.Games
                     points++;
                     TextChanger();
                     EasyBox.Text = null;
+                    
                 }                
             }
+            
             if (life == 0)
             {
                 MessageBox.Show("Niestety przegrałeś\nZdobyłeś " + points + " punktów");
@@ -336,7 +338,7 @@ namespace My_Games.Games
                 if (box.Enabled == false)
                     how++;
             }
-            if (how == lettersLbl.Count)
+            if (how == lettersLbl.Count-1)
             {
                 MessageBox.Show("Brawo !!!");
                 GetWord(allCategoryWords);

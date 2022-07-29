@@ -11,7 +11,7 @@ namespace My_Games.Games
         List<PictureBox> pcBoxList = new List<PictureBox>();
         Stopwatch gamewatch = new Stopwatch();
         Stopwatch watch = new Stopwatch();
-        Thread _th1;
+        int _click = 0;
         #endregion
         public MemTraining()
         {
@@ -111,32 +111,30 @@ namespace My_Games.Games
             }
         }
         public void ImageCheck()
-        {
+        {           
             if (pcBoxList.Where(p => p.Tag.ToString() == "click").Count() < 2)
             {
                 return;
             }
             List<PictureBox> temp = new List<PictureBox>();
             temp.AddRange(pcBoxList.Where(p => p.Tag.ToString() == "click"));
-            if (temp[0].Name == temp[1].Name)
+            lock (this)
             {
-                _Pkt++;
-                temp[0].Enabled = false;
-                temp[1].Enabled = false;
-                temp[0].Click -= BoxClick;
-                temp[1].Click -= BoxClick;
-                temp[0].Tag = "";
-                temp[1].Tag = "";
-            }
-            else
-            {
-                Thread.Sleep(1000);
-                temp[0].BackColor = Color.Black;
-                temp[1].BackColor = Color.Black;
-                temp[0].Image = null;
-                temp[1].Image = null;
-                temp[0].Tag = "";
-                temp[1].Tag = "";
+                if (temp[0].Name == temp[1].Name)
+                {
+                    _Pkt++;
+                    temp[0].Enabled = false;
+                    temp[1].Enabled = false;
+                    temp[0].Click -= BoxClick;
+                    temp[1].Click -= BoxClick;
+                    temp[0].Tag = "";
+                    temp[1].Tag = "";
+                    _click = 0;
+                }
+                else
+                {
+                    Task.Run(() => ChangeToBlack(temp));                  
+                }
             }
             if (pcBoxList.Where(p => p.Enabled == false).Count() == _ImageNum * 2)
             {
@@ -144,6 +142,17 @@ namespace My_Games.Games
                 MessageBox.Show("Zgadłeś wszystkie brawo !!!\nKliknij ok później nowa gra.\nTa gra zajęła Ci "+ gamewatch.Elapsed.ToString("mm\\:ss")+" minut");
                 gamewatch.Reset();
             }
+        }
+        public void ChangeToBlack(List<PictureBox> temp)
+        {
+            Thread.Sleep(500);
+            temp[0].BackColor = Color.Black;
+            temp[1].BackColor = Color.Black;
+            temp[0].Image = null;
+            temp[1].Image = null;
+            temp[0].Tag = "";
+            temp[1].Tag = "";
+            _click = 0;
         }
         public void PointsChanger()
         {
@@ -158,7 +167,6 @@ namespace My_Games.Games
         private void MTLoad(object sender, EventArgs e)
         {
             PointsChanger();
-            _th1 = new Thread(new ThreadStart(ImageCheck));
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -182,6 +190,9 @@ namespace My_Games.Games
 
         private void BoxClick(object sender, EventArgs e)
         {
+            if (_click == 2)
+                return;
+            _click++;
             PictureBox send = (PictureBox)sender;
             if (send.BackColor == Color.Black)
             {
@@ -189,7 +200,7 @@ namespace My_Games.Games
                 send.BackColor = DefaultBackColor;
                 send.Image = PicImage.Images[Imageid];
                 send.Tag = "click";
-                this.Invoke(new Action(ImageCheck));
+                ImageCheck();
                 PointsChanger();
             }
             else
@@ -197,6 +208,7 @@ namespace My_Games.Games
                 send.Image = null;
                 send.BackColor = Color.Black;
                 send.Tag = "";
+                _click = 0;
             }           
         }
         #endregion
