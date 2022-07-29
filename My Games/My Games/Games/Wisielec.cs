@@ -100,7 +100,7 @@ namespace My_Games.Games
         private void GetWord(List<string> WordsList)
         {
             Random IndexOfWord = new Random();
-            Word = WordsList[IndexOfWord.Next(0, WordsList.Count - 1)];
+            Word = WordsList[IndexOfWord.Next(0, WordsList.Count - 1)].Trim();
         }
         private void SetTextBox(string text)
         {
@@ -181,7 +181,6 @@ namespace My_Games.Games
                     Painting();
                     TextChanger();
                     GetWord(allCategoryWords);
-                    MessageBox.Show(Word);
                     SetTextBox(Word);
                     return;
                 }
@@ -251,30 +250,31 @@ namespace My_Games.Games
             int startlocation = (580 - (34 * text.Length)) / 2;
             int x = startlocation - 34;
             int y = 350;
-            Dictionary<int, Char> Letter = new Dictionary<int, char>();
+            List<Char> Letter = new List<char>();
             for (int i = 0; i < text.Count(); i++)
-                Letter.Add(i, text[i]);
+                Letter.Add(text[i]);
             lettersBoxes.Clear();
+            lettersLbl.Clear();
             if (Word != "")
             {
                 foreach (char letter in Word)
                 {
                     foreach (var item in this.Controls)
                     {
-                        if (item is Label && (item as Label).Name !=PointLbl.Name)
+                        if (item is Label && (item as Label).Name != PointLbl.Name)
                         {
                             this.Controls.Remove((Control)item);
                         }
                     }
                 }
             }
-            foreach (char item in Letter.Values)
+            foreach (char item in Letter)
             {
                 Label LetterLbl = new Label();
                 LetterLbl.Size = new Size(24, 24);
                 if (item.ToString() == " " || item.ToString() == "-")
                 {
-                    LetterLbl.Text = item.ToString();
+                    LetterLbl.Text = item.ToString().Trim();
                     LetterLbl.Enabled = false;
                     LetterLbl.Font = new Font(FontFamily.GenericSerif, 10f, FontStyle.Bold);
                     LetterLbl.Location = new Point(x, y);
@@ -294,6 +294,7 @@ namespace My_Games.Games
 
         private void EasyBtn_Click(object sender, EventArgs e)
         {
+            bool temp = false;
             if (string.IsNullOrEmpty(EasyBox.Text))
                 return;
             string let = EasyBox.Text;
@@ -312,10 +313,23 @@ namespace My_Games.Games
                     points++;
                     TextChanger();
                     EasyBox.Text = null;
-                    
+                    temp = true;
                 }                
             }
-            
+            int how = 0;
+            foreach (Label box in lettersLbl)
+            {
+                if (box.Enabled == false)
+                    how++;
+            }
+            if (how == lettersLbl.Count)
+            {
+                MessageBox.Show("Brawo !!!");
+                GetWord(allCategoryWords);
+                SetLabel(Word);
+            }
+            if (temp)
+                return;
             if (life == 0)
             {
                 MessageBox.Show("Niestety przegrałeś\nZdobyłeś " + points + " punktów");
@@ -331,19 +345,7 @@ namespace My_Games.Games
                     life--;
                 TextChanger();
                 Painting();
-            }
-            int how = 0;
-            foreach (Label box in lettersLbl)
-            {
-                if (box.Enabled == false)
-                    how++;
-            }
-            if (how == lettersLbl.Count-1)
-            {
-                MessageBox.Show("Brawo !!!");
-                GetWord(allCategoryWords);
-                SetLabel(Word);
-            }
+            }           
         }
     }
 }
