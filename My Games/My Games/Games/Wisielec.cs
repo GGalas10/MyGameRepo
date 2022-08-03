@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 namespace My_Games.Games
 {
-    public partial class Wisielec : Form
+    public partial class Wisielec  : Form
     {
         private List<TextBox> lettersBoxes = new List<TextBox>();
         private List<Label> lettersLbl = new List<Label>();
@@ -123,7 +123,7 @@ namespace My_Games.Games
                 {
                     foreach (var item in this.Controls)
                     {
-                        if (item is TextBox)
+                        if (item is TextBox && (item as TextBox).Name != EasyBox.Name)
                         {
                             this.Controls.Remove((Control)item);
                         }
@@ -233,8 +233,6 @@ namespace My_Games.Games
                     break;
 
             }
-
-
         }
         private void TextChanger()
         {
@@ -246,6 +244,7 @@ namespace My_Games.Games
         {
             foreach(TextBox txtBox in lettersBoxes)
             {
+
                 this.Controls.Remove(txtBox);
             }
             UseLetter.Clear();
