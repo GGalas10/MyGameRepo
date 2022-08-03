@@ -28,6 +28,8 @@ namespace My_Games.Games
 
         private void NewGameBtn_Click(object sender, EventArgs e)
         {
+            var graph = panel1.CreateGraphics();
+            graph.Clear(panel1.BackColor);
             if (HardModeCheck.Checked == true)
             {
                 this.Size = new Size(560, 425);
@@ -328,11 +330,14 @@ namespace My_Games.Games
                 GetWord(allCategoryWords);
                 SetLabel(Word);
             }
+            EasyBox.Focus();
+            EasyBox.Text = "";
             if (temp)
                 return;
             if (life == 0)
             {
-                MessageBox.Show("Niestety przegrałeś\nZdobyłeś " + points + " punktów");
+                MessageBox.Show("Niestety przegrałeś\nZdobyłeś " + points + " punktów\n" +
+                    "Słowo, którego nie zgadłeś to: "+Word);
                 points = 0;
                 life = 10;
                 Painting();
@@ -346,6 +351,11 @@ namespace My_Games.Games
                 TextChanger();
                 Painting();
             }           
+        }
+
+        private void EasyBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }

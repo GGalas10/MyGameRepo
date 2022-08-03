@@ -114,6 +114,7 @@
             this.EasyBox.Size = new System.Drawing.Size(37, 23);
             this.EasyBox.TabIndex = 9;
             this.EasyBox.Visible = false;
+            this.EasyBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EasyBox_KeyPress);
             // 
             // EasyBtn
             // 
